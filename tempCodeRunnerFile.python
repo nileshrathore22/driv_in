@@ -1,0 +1,3 @@
+import pandas as pd
+df_cocoa = pd.read_csv('flavors_of_cocoa.csv')
+print(df_cocoa)

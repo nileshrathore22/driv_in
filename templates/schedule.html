@@ -1,0 +1,178 @@
+{% include "header.html" %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9f9f9;
+    color: #333;
+  }
+
+  /* Hero Section */
+  .hero {
+    background: url('https://images.pexels.com/photos/3775120/pexels-photo-3775120.jpeg?auto=compress&cs=tinysrgb&w=1600') center center/cover no-repeat;
+    height: 60vh;   /* more responsive */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  .hero h1 {
+    position: relative;
+    font-size: 3rem;
+    font-weight: 700;
+    z-index: 2;
+  }
+
+  /* Schedule Section */
+  .schedule-section { padding: 80px 0; text-align: center; }
+  .schedule-section h2 { font-weight: 700; font-size: 2.2rem; margin-bottom: 40px; color: #0d2f4f; }
+  .schedule-section h2::after {
+    content: "";
+    width: 70px; height: 4px; background: #ffc107;
+    display: block; margin: 12px auto 0; border-radius: 2px;
+  }
+
+  /* Tabs */
+  .nav-pills .nav-link {
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    background: #e9ecef;
+    margin: 0 5px;
+    transition: 0.3s;
+  }
+  .nav-pills .nav-link.active {
+    background: #ffc107;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+  }
+
+  /* Table */
+  .table { border-radius: 12px; overflow: hidden; background: #fff; }
+  .table thead th {
+    background: linear-gradient(90deg, #ffc107, #ffdd57);
+    color: #fff; text-align: center; font-weight: 600;
+  }
+  .table tbody tr { transition: all 0.3s ease-in-out; }
+  .table tbody tr:hover {
+    background: rgba(255, 193, 7, 0.1);
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+  .table td { text-align: center; font-size: 0.95rem; padding: 14px; }
+
+  /* Instructor Images */
+  .instructor-img {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+    border: 2px solid #ffc107;
+  }
+  .instructor-cell { display: flex; align-items: center; justify-content: center; }
+  
+  /* Back to Top */
+  .back-to-top {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #ffc107; color: #fff; padding: 12px;
+    border-radius: 50%; display: none; cursor: pointer;
+    font-size: 22px; z-index: 1000; transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  .back-to-top:hover { background: #ffb300; transform: scale(1.1); }
+</style>
+
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Driving Class Schedule</h1>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="schedule-section container">
+    <h2>Weekly Class Schedule</h2>
+
+    <!-- Tabs -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="scheduleTab" role="tablist">
+      <li class="nav-item">
+        <button class="nav-link active" id="male-tab" data-bs-toggle="pill" data-bs-target="#male" type="button">Male Batch</button>
+      </li>
+      <li class="nav-item">
+        <button class="nav-link" id="female-tab" data-bs-toggle="pill" data-bs-target="#female" type="button">Female Batch</button>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="scheduleTabContent">
+      <!-- Male Batch -->
+      <div class="tab-pane fade show active" id="male" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr><th>Time</th><th>Lesson</th><th>Instructor</th><th>Day</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>08:00 AM - 09:00 AM</td><td>Basic Driving (Manual)</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/men/10.jpg"> Mr. Rajesh Kumar</td><td>Mon - Fri</td></tr>
+              <tr><td>09:30 AM - 10:30 AM</td><td>Traffic Rules Theory</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/men/12.jpg"> Mr. Anil Mehta</td><td>Mon, Wed, Fri</td></tr>
+              <tr><td>11:00 AM - 12:00 PM</td><td>Parking Practice</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/men/13.jpg"> Mr. Ramesh Yadav</td><td>Tue, Thu</td></tr>
+              <tr><td>02:00 PM - 03:00 PM</td><td>Highway Driving</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/men/15.jpg"> Mr. Sunil Sharma</td><td>Mon - Fri</td></tr>
+              <tr><td>04:00 PM - 05:00 PM</td><td>Defensive Driving</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/men/16.jpg"> Mr. Arvind Joshi</td><td>Sat</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Female Batch -->
+      <div class="tab-pane fade" id="female" role="tabpanel">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr><th>Time</th><th>Lesson</th><th>Instructor</th><th>Day</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>08:30 AM - 09:30 AM</td><td>Beginner Driving (Automatic)</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/women/21.jpg"> Ms. Neha Sharma</td><td>Mon - Fri</td></tr>
+              <tr><td>10:00 AM - 11:00 AM</td><td>Traffic Signs & Rules</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/women/25.jpg"> Ms. Priya Verma</td><td>Tue, Thu</td></tr>
+              <tr><td>12:00 PM - 01:00 PM</td><td>Reverse & Parking Skills</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/women/30.jpg"> Ms. Aarti Singh</td><td>Mon, Wed, Fri</td></tr>
+              <tr><td>03:00 PM - 04:00 PM</td><td>City Driving Practice</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/women/32.jpg"> Ms. Kavita Joshi</td><td>Mon - Fri</td></tr>
+              <tr><td>05:00 PM - 06:00 PM</td><td>Advanced Safety & Night Driving</td>
+                <td class="instructor-cell"><img class="instructor-img" src="https://randomuser.me/api/portraits/women/33.jpg"> Ms. Ritu Malhotra</td><td>Sat</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top -->
+  <div class="back-to-top" id="back-to-top">↑</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const btn = document.getElementById("back-to-top");
+    window.addEventListener("scroll", () => {
+      btn.style.display = window.scrollY > 200 ? "block" : "none";
+    });
+    btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+  </script>
+
+{% include "footer.html" %}

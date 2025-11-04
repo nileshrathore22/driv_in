@@ -1,0 +1,51 @@
+{% include "header.html" %}
+{% load static %}
+
+<!-- Blog Section Start -->
+<div class="container-xxl py-6">
+    <div class="container">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="text-primary text-uppercase mb-2">Our Blog</h6>
+            <h1 class="display-6 mb-5">Latest Updates & Driving Tips</h1>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="text-center mb-5">
+            <h5 class="text-secondary mb-3">Categories</h5>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <a href="{% url 'blog_page' %}" class="btn btn-outline-primary px-4 py-2 {% if not request.GET.category %}active{% endif %}">All</a>
+                {% for cat in categories %}
+                    <a href="?category={{ cat.id }}" class="btn btn-outline-primary px-4 py-2 {% if request.GET.category == cat.id|stringformat:'s' %}active{% endif %}">
+                        {{ cat.catname }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Blog Posts (Without Image) -->
+        <div class="row g-4 justify-content-center">
+            {% for post in posts %}
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                    <div class="card shadow-sm border-0 rounded-3 overflow-hidden h-100">
+                        <div class="card-body p-4">
+                            <p class="text-muted small mb-2">
+                                <i class="fa fa-folder me-2 text-primary"></i>{{ post.category_name.catname }}
+                                <span class="float-end">
+                                    <i class="fa fa-calendar me-1 text-primary"></i>{{ post.datetime_post|date:"d M, Y" }}
+                                </span>
+                            </p>
+                            <h5 class="mb-3 text-primary">{{ post.title }}</h5>
+                            <p class="mb-4">{{ post.content|truncatewords:30 }}</p>
+                            <a href="#" class="btn btn-sm btn-outline-primary rounded-pill px-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="text-center text-muted">No blog posts available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Blog Section End -->
+
+{% include "footer.html" %}

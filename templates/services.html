@@ -1,0 +1,103 @@
+{% include "header.html" %}
+{% load static %}
+
+<!-- Services Section Start -->
+<div class="container-xxl py-6">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h6 class="text-primary text-uppercase mb-2">Our Services</h6>
+            <h1 class="display-6 mb-4">Professional Training & Support</h1>
+        </div>
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="service-item bg-light rounded h-100 p-4 text-center shadow-sm">
+                    <div class="btn-square bg-primary rounded-circle mx-auto mb-4" style="width: 70px; height: 70px;">
+                        <i class="fa fa-car text-white fa-2x"></i>
+                    </div>
+                    <h5 class="mb-3">{{ service.title }}</h5>
+                    <p class="mb-0">{{ service.description }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No services available yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Services Section End -->
+
+
+<!-- Courses Section Start -->
+<div class="container-xxl py-6 bg-light">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h6 class="text-primary text-uppercase mb-2">Our Courses</h6>
+            <h1 class="display-6 mb-4">Learn With The Best Trainers</h1>
+        </div>
+        <div class="row g-4">
+            {% for course in courses %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter }}s">
+                <div class="course-item bg-white rounded shadow-sm overflow-hidden h-100">
+                    <div class="p-4">
+                        <h5 class="text-primary mb-2">{{ course.name }}</h5>
+                        <p><i class="fa fa-clock text-primary me-2"></i><b>Duration:</b> {{ course.duration }}</p>
+                        <p><i class="fa fa-rupee-sign text-primary me-2"></i><b>Fee:</b> ₹{{ course.fee }}</p>
+                        <p class="mt-3">{{ course.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p>No courses available yet.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Courses Section End -->
+
+
+<!-- Features Section Start (Optional Retain) -->
+<div class="container-xxl py-6">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-primary text-uppercase mb-2">Why Choose Us!</h6>
+                <h1 class="display-6 mb-4">Best Driving Training Agency In Your City</h1>
+                <p class="mb-5">We offer professional driving lessons with certified instructors and flexible timings to help you become a confident and safe driver.</p>
+                <div class="row gy-4 gx-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0 btn-square bg-primary me-3">
+                                <i class="fa fa-check text-white"></i>
+                            </div>
+                            <h5 class="mb-0">Fully Licensed</h5>
+                        </div>
+                        <span>All our trainers are RTO approved and experienced.</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0 btn-square bg-primary me-3">
+                                <i class="fa fa-check text-white"></i>
+                            </div>
+                            <h5 class="mb-0">Affordable Fees</h5>
+                        </div>
+                        <span>Get top-quality training at the best price in your area.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="position-relative overflow-hidden pe-5 pt-5 h-100" style="min-height: 400px;">
+                    <img class="position-absolute w-100 h-100 rounded" src="{% static 'img/about-1.jpg' %}" alt="" style="object-fit: cover;">
+                    <img class="position-absolute top-0 end-0 bg-white ps-3 pb-3 rounded" src="{% static 'img/about-2.jpg' %}" alt="" style="width: 200px; height: 200px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Features Section End -->
+
+{% include "footer.html" %}
