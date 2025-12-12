@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'courses',
     'team',
     'testimonial',
-    'mainapp'
+    'mainapp',
+    'rest_framework',
+    'myapi'
+    
 ]
 
 MIDDLEWARE = [

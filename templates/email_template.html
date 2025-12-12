@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thank You for Contacting DrivinSmart Academy</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f8fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  .email-container {
+    background-color: #ffffff;
+    max-width: 700px;
+    margin: 30px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  .header {
+    background-color: #0B5ED7;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  .header h2 {
+    margin: 0;
+    font-size: 26px;
+  }
+  .banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .content {
+    padding: 25px 30px;
+    line-height: 1.7;
+  }
+  .content ul {
+    list-style: none;
+    padding: 0;
+  }
+  .content li {
+    margin-bottom: 8px;
+  }
+  .footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: #777;
+  }
+  a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0B5ED7;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+  }
+</style>
+</head>
+<body>
+
+<div class="email-container">
+  <div class="header">
+    <h2>DrivinSmart Academy</h2>
+    <p>Learn. Drive. Succeed.</p>
+  </div>
+
+  <div class="banner">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS05rMIpVLruJ5JsBzB222LgAgmrzJ7MN-9Pg&s" alt="Driving School Banner">
+  </div>
+
+  <div class="content">
+    <p>Dear {{ username }},</p>
+
+    <p>Thank you for getting in touch with <strong>DriveSmart Academy</strong>! We’ve received your message successfully.</p>
+
+    <p>Here’s a quick summary of your query:</p>
+    <ul>
+      <li><strong>Email:</strong> {{ usermail }}</li>
+      <li><strong>Subject:</strong> {{ usersubject }}</li>
+      <li><strong>Message:</strong> {{ usermessage }}</li>
+    </ul>
+
+    <p>Our support team will review your query and reach out to you shortly. Meanwhile, feel free to explore our website for more information on driving lessons, licensing tips, and instructor details.</p>
+
+    <p>Drive safe and stay confident!</p>
+    <p><strong>– The DriveSmart Academy Team</strong></p>
+
+    <a href="https://htmlcodex.com/demo/?item=2478" class="button">Visit Our Website</a>
+  </div>
+
+  <div class="footer">
+    <p>© 2025 DriveSmart Academy. All rights reserved.</p>
+    <p>Contact us: support@drivesmartacademy.com</p>
+  </div>
+</div>
+
+</body>
+</html>

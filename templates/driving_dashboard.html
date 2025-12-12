@@ -1,0 +1,108 @@
+{% include "header.html" %}
+
+<div class="container py-5">
+
+    <h1 class="mb-5 text-center text-primary display-4">Driving Training Dashboard</h1>
+
+    <!-- ===== Search / Filter ===== -->
+    <div class="row mb-4 justify-content-center">
+        <div class="col-md-6">
+            <input type="text" id="carSearch" class="form-control form-control-lg shadow-sm" placeholder="Search by Car or Model...">
+        </div>
+    </div>
+
+    <!-- ===== Car Cards ===== -->
+    <div class="row" id="carContainer">
+        {% if cars %}
+            {% for car in cars %}
+            <div class="col-md-4 mb-4 car-card" data-car="{{ car.car }}" data-model="{{ car.car_model }}" data-year="{{ car.year }}">
+                <div class="card h-100 shadow-sm border-0 rounded-4 hover-scale" onclick="openCarModal('{{ car.car }}','{{ car.car_model }}','{{ car.year }}')">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-primary">{{ car.car }}</h5>
+                        <p class="card-text text-muted">{{ car.car_model }}</p>
+                        <p class="card-text fw-bold">Year: {{ car.year }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <p class="text-danger text-center">No car data available.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- ===== Car Details Modal ===== -->
+<div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4 shadow-lg">
+      <div class="modal-header bg-primary text-white rounded-top-4">
+        <h5 class="modal-title" id="carModalLabel">Car Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Car:</strong> <span id="modalCar"></span></p>
+        <p><strong>Model:</strong> <span id="modalModel"></span></p>
+        <p><strong>Year:</strong> <span id="modalYear"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "footer.html" %}
+
+<!-- ===== JS: Search + Modal ===== -->
+<script>
+    // ===== Search / Filter Cards =====
+    const searchInput = document.getElementById('carSearch');
+    const carContainer = document.getElementById('carContainer');
+    searchInput.addEventListener('keyup', function() {
+        const filter = searchInput.value.toLowerCase();
+        const cards = carContainer.getElementsByClassName('car-card');
+        for (let i = 0; i < cards.length; i++) {
+            const carName = cards[i].getAttribute('data-car').toLowerCase();
+            const carModel = cards[i].getAttribute('data-model').toLowerCase();
+            if (carName.includes(filter) || carModel.includes(filter)) {
+                cards[i].style.display = "";
+            } else {
+                cards[i].style.display = "none";
+            }
+        }
+    });
+
+    // ===== Open Modal =====
+    function openCarModal(car, model, year) {
+        document.getElementById('modalCar').innerText = car;
+        document.getElementById('modalModel').innerText = model;
+        document.getElementById('modalYear').innerText = year;
+        const carModal = new bootstrap.Modal(document.getElementById('carModal'));
+        carModal.show();
+    }
+</script>
+
+<!-- ===== CSS Styling ===== -->
+<style>
+    .hover-scale:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s;
+    }
+    .card-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+    .card-text {
+        font-family: 'Poppins', sans-serif;
+    }
+    #carSearch {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .modal-header {
+        border-bottom: none;
+    }
+    .modal-content {
+        border: none;
+    }
+</style>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country List</title>
+
+    <!-- Bootstrap CSS (your website already uses this) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome (your site uses icons) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Your Website Style (Driving School Theme Colors) -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .page-header {
+            background: linear-gradient(to right, #0d6efd, #004aad);
+            padding: 40px 0;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .table-container {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        table thead {
+            background: #0d6efd;
+            color: white;
+        }
+
+        table tbody tr:hover {
+            background: #f1f7ff;
+        }
+
+        h1 {
+            font-weight: 700;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <div class="page-header">
+        <h1><i class="fa fa-flag me-2"></i>Country List</h1>
+        <p class="mt-2">Driving Project – Country Database</p>
+    </div>
+
+    <!-- Table Section -->
+    <div class="container">
+        <div class="table-container">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th><i class="fa fa-code me-2"></i>Code</th>
+                        <th><i class="fa fa-globe me-2"></i>Country</th>
+                        <th><i class="fa fa-map me-2"></i>Region</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for code, details in countries.items %}
+                    <tr>
+                        <td>{{ code }}</td>
+                        <td>{{ details.country }}</td>
+                        <td>{{ details.region }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

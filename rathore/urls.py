@@ -32,7 +32,10 @@ urlpatterns = [
     #path('our-services',views.service_page),
     path('contact',views.contact_page),
     path('schedule',views.schedule_page),
-    path('contact-us',views.contact_page)
+    path('contact-us',views.contact_page),
+    path('countries',views.countriesData),
+    path('driving-dashboard/', views.driving_dashboard, name='drivingDashboard'),
+    path('teachers/', include('myapi.urls')),
     
 ]
 
